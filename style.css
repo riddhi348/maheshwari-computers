@@ -50,6 +50,9 @@ header {
   position: fixed;
   width: 100%;
   z-index: 1000;
+  top: 0;
+  left: 0;
+  
 }
 
 .navbar {
@@ -76,6 +79,7 @@ header {
 .nav-links {
   display: flex;
   list-style: none;
+  justify-content: flex-end;
 }
 
 .nav-links li a {
@@ -104,12 +108,16 @@ header {
 }
 
 /* Hero Section */
+/* Hero Section */
 .hero {
-  min-height: 100vh;
+  position: relative;        /* ensures it respects viewport */
+  width: 100%;               /* full width */
+  height: 100vh;             /* full height of viewport */
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
               url('https://images.unsplash.com/photo-1588702547919-26089e690ecc?auto=format&fit=crop&w=1350&q=80');
-  background-size: cover;
+  background-size: cover;    /* scale image to cover entire area */
   background-position: center;
+  background-repeat: no-repeat; /* prevent tiling */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,6 +125,21 @@ header {
   color: #fff;
   padding: 0 15px;
 }
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* align links to the left */
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+  }
+}
+
+  
 
 .hero-content h1 {
   font-size: clamp(1.5rem, 6vw, 3rem);
@@ -147,6 +170,7 @@ header {
   font-size: clamp(1rem, 4vw, 1.2rem);
   color: #fff;
   max-width: 100%;
+  text-align: center;
 }
 
 @keyframes typing {
